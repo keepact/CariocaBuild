@@ -13,7 +13,7 @@ Application developed during job selection challenge
 
 ## libs used:
   
- react-router-dom, Styled-components, Json-Server, Eslint, Prettier
+ React-router-dom, Styled-components, Json-Server, Eslint, Prettier
  
 ## Javascript Project:
  
