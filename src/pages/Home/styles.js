@@ -26,3 +26,13 @@ export const ProductTable = styled.table`
     font-size: 18px;
   }
 `;
+
+export const FiltersContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    display: block;
+  }
+`;

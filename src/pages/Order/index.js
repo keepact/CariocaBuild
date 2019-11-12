@@ -5,7 +5,7 @@ import { formatPrice } from '../../util/format';
 
 import { Container, ProductTable, ClientContainer, Total } from './styles';
 
-export default function Order() {
+export default function Order({ match }) {
   const [product, setProduct] = useState([]);
   const [items, setItems] = useState([]);
   const [client, setClient] = useState([]);
@@ -13,7 +13,7 @@ export default function Order() {
   useEffect(() => {
     async function loadItems() {
       try {
-        const response = await api.get('/products/1');
+        const response = await api.get(`/products/${match.params.id}`);
 
         const data = response.data.items.map(p => ({
           ...p,
