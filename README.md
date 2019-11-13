@@ -17,7 +17,7 @@ Application developed during job selection challenge
  
 ## Javascript Project:
  
- React JS.
+ Node and React JS.
 
 ## Scripts
 
