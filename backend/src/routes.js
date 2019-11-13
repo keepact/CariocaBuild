@@ -25,6 +25,7 @@ routes.put('/users', UserController.update);
 routes.post('/clients', ClientController.store);
 routes.put('/clients:id', ClientController.update);
 
+routes.get('/clients/:client_id/addresses', AddressController.index);
 routes.post('/clients/:client_id/addresses', AddressController.store);
 
 routes.post('/clients/:client_id/orders', OrderController.store);
