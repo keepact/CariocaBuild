@@ -22,6 +22,6 @@ routes.put('/clients:id', ClientController.update);
 
 routes.post('/clients/:client_id/addresses', AddressController.store);
 
-routes.post('/orders', OrderController.store);
+routes.post('/clients/:client_id/orders', OrderController.store);
 
 export default routes;
