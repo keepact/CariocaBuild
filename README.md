@@ -1,8 +1,6 @@
 # CariocaBuild
 Order Management Application
 
-
-# CariocaBuild Challeng
 Application developed during job selection challenge
 
 ### App Screen
