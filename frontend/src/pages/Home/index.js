@@ -28,7 +28,11 @@ export default function Home() {
   }, []);
 
   const filteredData = products.filter(item => {
-    return item.client.name.toLowerCase().indexOf(filter) !== -1;
+    return (
+      item.client.name.toLowerCase().indexOf(filter) !== -1 ||
+      item.date.includes(filter) ||
+      item.priceFormatted.includes(filter)
+    );
   });
 
   function handleChange(event) {
@@ -40,11 +44,11 @@ export default function Home() {
       <FiltersContainer>
         <div>
           <span>Data de ínicio</span>
-          <input type="date" />
+          <input type="date" onChange={handleChange} />
         </div>
         <div>
           <span>Data de Término</span>
-          <input type="date" />
+          <input type="date" onChange={handleChange} />
         </div>
         <div>
           <span>Nome do cliente</span>
