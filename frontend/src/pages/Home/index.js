@@ -10,6 +10,7 @@ import { Container, ProductTable, FiltersContainer } from './styles';
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState([]);
+  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     async function loadProducts() {
@@ -18,7 +19,7 @@ export default function Home() {
       const data = response.data.map(product => ({
         ...product,
         priceFormatted: formatPrice(product.value),
-        dateFormatted: format(parseISO(product.date), "dd'/'M/Y"),
+        dateFormatted: format(parseISO(product.date), "Y'-'M-dd"),
       }));
 
       setProducts(data);
@@ -28,15 +29,19 @@ export default function Home() {
   }, []);
 
   const filteredData = products.filter(item => {
+    const dateFilter = item.dateFormatted > date && item.dateFormatted < filter;
+
     return (
       item.client.name.toLowerCase().indexOf(filter) !== -1 ||
-      item.date.includes(filter) ||
+      dateFilter ||
       item.priceFormatted.includes(filter)
     );
   });
 
+  console.log(filteredData, 'teste');
+
   function handleChange(event) {
-    setFilter(event.target.value);
+    setFilter(event.target.value.toLowerCase());
   }
 
   return (
@@ -44,7 +49,7 @@ export default function Home() {
       <FiltersContainer>
         <div>
           <span>Data de ínicio</span>
-          <input type="date" onChange={handleChange} />
+          <input type="date" onChange={e => setDate(e.target.value)} />
         </div>
         <div>
           <span>Data de Término</span>
@@ -56,7 +61,7 @@ export default function Home() {
         </div>
         <div>
           <span>Valor mínimo</span>
-          <input type="number" value={filter} onChange={handleChange} />
+          <input type="number" onChange={handleChange} />
         </div>
       </FiltersContainer>
       <ProductTable>
