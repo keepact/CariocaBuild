@@ -1,4 +1,4 @@
-# CariocaBuild
+# OrderApp
 Order Management Application
 
 Application developed during job selection challenge
